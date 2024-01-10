@@ -6,7 +6,7 @@ function Home() {
   const dispacth = useDispatch()
   const {products} = useSelector((state)=>state.products)
   useEffect(()=>{
-    dispacth(fetchProducts)
+    dispacth(fetchProducts())
   },[])
   return (
     <div>
