@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import products  from '../../products'; 
 
 const initialState = {
   products: [],
@@ -9,17 +8,28 @@ const initialState = {
 
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
-  async () => {
+  async (token) => {
     try {
-      const response = await fetch('http://localhost:3000/api/products'); // Replace with your API endpoint
+      
+      const response = await fetch('http://localhost:3000/api/products', {
+        headers: {
+          'Authorization': `Bearer ${token.token}`,
+          'Content-Type': 'application/json' 
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch products');
+      }
+
       const data = await response.json();
-      console.log(data);
-      return data;
+      return data.products;
     } catch (error) {
-      throw Error('Failed to fetch products');
+      throw new Error('Failed to fetch products');
     }
   }
 );
+
 
 const productSlice = createSlice({
   name: 'products',

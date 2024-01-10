@@ -3,6 +3,7 @@ import userRouter from "./routes/auth.route.js";
 import Product from "./models/product.model.js";
 import { verifyToken } from "./utils/verifyUser.js";
 import { connectDataBase } from "./utils/connectDB.js";
+import {getProducts} from './controllers/product.controller.js'
 import cors from 'cors'
 const uri = 'mongodb+srv://test:s57hbgML5XGiQHAp@cluster0.hmulnre.mongodb.net/'
 connectDataBase(uri)
@@ -17,12 +18,7 @@ app.listen(3000, () => {
 });
 
 app.use("/api/user", userRouter);
-app.get("/api/products", async (req, res) => {
-  try {
-    const products = await Product.find();
-    res.status(200).json(products);
-  } catch (error) {}
-});
+app.get("/api/products",verifyToken, getProducts);
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;

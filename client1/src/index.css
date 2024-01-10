@@ -1,3 +1,62 @@
 body{
     background-color: rgb(241, 245, 241);
 }
+/* Card.css */
+.card {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  
+  .card-image img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .card-content {
+    padding: 15px;
+  }
+  
+  .card-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .category {
+    margin-bottom: 10px;
+  }
+  
+  .description {
+    margin-bottom: 10px;
+  }
+  
+  .price {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .additional-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .brand {
+    font-style: italic;
+  }
+  
+  .rating {
+    font-weight: bold;
+  }
+  
+  .details-link {
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #007bff; /* Change link color as needed */
+  }
+  
